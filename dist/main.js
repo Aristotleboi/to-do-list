@@ -1,0 +1,1 @@
+(()=>{let t=new class{constructor(t,e,o,r,s){this.title=t,this.description=e,this.dueDate=o,this.priority=r,this.checked=s}}("call the doctor","call","07/04/22","low",!1);const e=(t=>{let e=[];return{getName:()=>"appointments",addToDoToArray:t=>{e.push(t)},seeArray:()=>console.log(e)}})();e.addToDoToArray(t),e.seeArray()})();

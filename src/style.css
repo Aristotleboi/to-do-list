@@ -1,0 +1,16 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background-color: green;
+}
+
+.tab {
+    background-color: red;
+}
+
+.card {
+    border: 3px solid black;
+}

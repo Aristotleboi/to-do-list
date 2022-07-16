@@ -1,5 +1,6 @@
 import {loadToDos, loadLists} from './to-do-dom';
 import {toDo, listType} from './to-do'
+import './style.css';
 
 let toDolists = [];
 

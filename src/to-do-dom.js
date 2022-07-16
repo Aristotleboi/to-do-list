@@ -1,8 +1,14 @@
-
+import { createNewToDoForm } from "./forms";
 
 const loadToDos = (list) => {
     const content = document.querySelector('.content');
     let numberOfToDos = list.length;
+    let newButton = document.createElement('button');
+    newButton.innerText = '+';
+    newButton.addEventListener('click', () => {
+        createNewToDoForm()
+    })
+    content.appendChild(newButton);
     for (let i = 0; i < numberOfToDos; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -21,6 +27,7 @@ const loadToDos = (list) => {
         let closeButton = document.createElement('button');
         closeButton.setAttribute('class', 'to-do-close-button');
         closeButton.innerText = 'delete';
+
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(date);

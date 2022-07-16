@@ -1,5 +1,5 @@
-import {loadFromList} from './to-do-dom';
-import toDo from './to-do'
+import {loadToDos, loadLists} from './to-do-dom';
+import {toDo, listType} from './to-do'
 
 let toDolists = [];
 
@@ -29,9 +29,11 @@ function addListToArray(list) {
 }
 
 
-let toDo1 = new toDo("call the doctor", "call", "07/04/22", 'low', false);
-const list1 = List("appointments");
+let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "07/04/22", 'low', false);
+const list1 = new listType('Default')
 
-list1.addToDoToArray(toDo1);
+list1.add(toDo1);
+addListToArray(list1);
 
-loadFromList(list1.getToDos())
+loadLists(toDolists)
+loadToDos(list1.singlelist)

@@ -1,4 +1,7 @@
-const createNewToDoForm = () => {
+import { currentList } from ".";
+import { submitToDO } from "./to-do-dom";
+
+const createNewToDoForm = (list) => {
     let content = document.querySelector('.content')
     let form = document.createElement('form')
     form.classList.add('form');
@@ -45,6 +48,10 @@ const createNewToDoForm = () => {
     FB.setAttribute('id', 'form-submit-button')
     FB.innerText = 'submit';
 
+    FB.addEventListener('click', () => {
+        submitToDO(list);
+    })
+
 
     FT.appendChild(FTLabel);
     FT.appendChild(FTInput);
@@ -58,8 +65,10 @@ const createNewToDoForm = () => {
     form.appendChild(FD);
     form.appendChild(FDate);
     form.appendChild(FP);
-    form.appendChild(FB);
     content.appendChild(form);
+    content.appendChild(FB)
+
+
 }
 
 export {createNewToDoForm}

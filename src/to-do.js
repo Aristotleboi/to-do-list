@@ -11,10 +11,11 @@
 class listType {
     constructor(name) {
         this.name = name;
-        this.singlelist = [];
+        this.singleList = [];
+        this.length = this.singleList.length;
 
         this.add = function (toDo) {
-            this.singlelist.push(toDo)
+            this.singleList.push(toDo)
         }
     }
 }

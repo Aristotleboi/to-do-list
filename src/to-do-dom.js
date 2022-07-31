@@ -1,7 +1,9 @@
 import { createNewToDoForm } from "./forms";
 import { toDo } from "./to-do";
 
+//loads to-do's from array to dom
 const loadToDos = (listArray, listLength, list) => {
+    clearDiv('.content')
     const content = document.querySelector('.content');
     console.log(list.length)
     let numberOfToDos = listLength;
@@ -44,6 +46,8 @@ const loadToDos = (listArray, listLength, list) => {
     }
 }
 
+//loads lists to dom
+//requires master array with all lists as input
 const loadLists = (lists) => {
     const header = document.querySelector('.to-do-lists');
     let numberOfLists = lists.length;
@@ -56,7 +60,8 @@ const loadLists = (lists) => {
         header.appendChild(tab);
     }
 }
-
+//get values from form pop up to make new to-do.
+//requires list object as input
 const submitToDO = (list) => {
     let toDoTitle = document.querySelector('#form-title').value;
     let toDoDescription = document.querySelector('#form-description').value;
@@ -69,6 +74,12 @@ const submitToDO = (list) => {
 
     loadToDos(list.singleList, list.singleList.length, list)
 }
+
+//function to clear dom of to-dos
+const clearDiv = (childDiv) => {
+    document.querySelector(childDiv).innerHTML = "";
+}
+
 
 export {
     loadToDos,

@@ -1,5 +1,5 @@
 import { currentList } from ".";
-import { submitToDO } from "./to-do-dom";
+import { submitToDO, loadToDos } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
     let content = document.querySelector('.content')
@@ -71,4 +71,28 @@ const createNewToDoForm = (list) => {
 
 }
 
-export {createNewToDoForm}
+const editToDoForm = (toDo, list) => {
+    createNewToDoForm()
+    let content = document.querySelector('.content')
+    let FB = document.querySelector('#form-submit-button')
+    FB.remove();
+    let editFormButton = document.createElement('button');
+    editFormButton.setAttribute('type', 'submit');
+    editFormButton.setAttribute('id', 'form-submit-button')
+
+    editFormButton.addEventListener('click', () => {
+        toDo.title = document.querySelector('#form-title').value;
+        toDo.description = document.querySelector('#form-description').value;
+        toDo.dueDate = document.querySelector('#form-date').value;
+        toDo.priority = document.querySelector('#form-priority').value;
+
+        loadToDos(list.singleList, list.singleList.length, list)
+    })
+
+    content.appendChild(editFormButton)
+}
+
+export {
+    createNewToDoForm,
+    editToDoForm
+}

@@ -1,4 +1,4 @@
-import { createNewToDoForm } from "./forms";
+import { createNewToDoForm, editToDoForm } from "./forms";
 import { toDo } from "./to-do";
 import { removeElementFromArray } from ".";
 
@@ -33,11 +33,15 @@ const loadToDos = (listArray, listLength, list) => {
         let closeButton = document.createElement('button');
         closeButton.setAttribute('class', 'to-do-close-button');
         closeButton.innerText = 'delete';
+        let editButton = document.createElement('button');
+        editButton.setAttribute('class', 'to-do-edit-button');
+        editButton.innerText = 'Edit';
 
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(date);
         card.appendChild(checked);
+        card.appendChild(editButton)
         card.appendChild(closeButton);
         content.appendChild(card);
 
@@ -46,6 +50,12 @@ const loadToDos = (listArray, listLength, list) => {
             content.removeChild(card)
             removeElementFromArray(listArray, i)
         })
+        //edit button functionality
+        editButton.addEventListener('click', () => {
+            editToDoForm(listArray[i], list)
+            
+        })
+
     }
 }
 

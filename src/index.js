@@ -13,6 +13,7 @@ function addListToArray(list) {
     toDolists.push(list);
 }
 
+//removes elements from array. used when user deletes to-do from dom
 function removeElementFromArray (array, indexNumber) {
     array.splice(indexNumber, 1)
 }

@@ -13,6 +13,10 @@ function addListToArray(list) {
     toDolists.push(list);
 }
 
+function removeElementFromArray (array, indexNumber) {
+    array.splice(indexNumber, 1)
+}
+
 
 
 let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "07/04/22", 'low', false);
@@ -23,4 +27,7 @@ addListToArray(list1);
 loadLists(toDolists)
 loadToDos(list1.singleList, list1.singleList.length, list1)
 
-export {currentList}
+export {
+    currentList,
+    removeElementFromArray
+}

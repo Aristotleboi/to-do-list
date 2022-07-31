@@ -1,8 +1,10 @@
 import { createNewToDoForm } from "./forms";
 import { toDo } from "./to-do";
+import { removeElementFromArray } from ".";
 
 //loads to-do's from array to dom
 const loadToDos = (listArray, listLength, list) => {
+    //this clears the dom of all to-do cards and clears the form after its been submitted
     clearDiv('.content')
     const content = document.querySelector('.content');
     console.log(list.length)
@@ -42,6 +44,7 @@ const loadToDos = (listArray, listLength, list) => {
         //close button functionality
         closeButton.addEventListener('click', () => {
             content.removeChild(card)
+            removeElementFromArray(listArray, i)
         })
     }
 }

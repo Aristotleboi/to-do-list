@@ -53,7 +53,7 @@ const loadToDos = (listArray, listLength, list) => {
         //edit button functionality
         editButton.addEventListener('click', () => {
             editToDoForm(listArray[i], list)
-            
+            clearDiv('.modal')
         })
 
     }
@@ -95,6 +95,7 @@ const submitToDO = (list) => {
     console.log(list);
 
     loadToDos(list.singleList, list.singleList.length, list)
+    clearDiv('.modal')
 }
 
 //function to clear dom of to-dos
@@ -106,5 +107,6 @@ const clearDiv = (childDiv) => {
 export {
     loadToDos,
     loadLists,
-    submitToDO
+    submitToDO,
+    clearDiv
 }

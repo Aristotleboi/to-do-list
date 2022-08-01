@@ -2,7 +2,7 @@ import { currentList } from ".";
 import { submitToDO, loadToDos } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
-    let content = document.querySelector('.content')
+    let modal = document.querySelector('.modal')
     let form = document.createElement('form')
     form.classList.add('form');
 
@@ -65,18 +65,19 @@ const createNewToDoForm = (list) => {
     form.appendChild(FD);
     form.appendChild(FDate);
     form.appendChild(FP);
-    content.appendChild(form);
-    content.appendChild(FB)
+    modal.appendChild(form);
+    modal.appendChild(FB)
 
 
 }
 
 const editToDoForm = (toDo, list) => {
     createNewToDoForm()
-    let content = document.querySelector('.content')
+    let modal = document.querySelector('.modal')
     let FB = document.querySelector('#form-submit-button')
     FB.remove();
     let editFormButton = document.createElement('button');
+    editFormButton.innerText = "save"
     editFormButton.setAttribute('type', 'submit');
     editFormButton.setAttribute('id', 'form-submit-button')
 
@@ -101,7 +102,7 @@ const editToDoForm = (toDo, list) => {
         loadToDos(list.singleList, list.singleList.length, list)
     })
 
-    content.appendChild(editFormButton)
+    modal.appendChild(editFormButton)
 }
 
 export {

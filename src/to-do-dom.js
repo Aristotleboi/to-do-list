@@ -6,6 +6,8 @@ import { removeElementFromArray } from ".";
 const loadToDos = (listArray, listLength, list) => {
     //this clears the dom of all to-do cards and clears the form after its been submitted
     clearDiv('.content')
+    clearDiv('.modal')
+    clearModal()
     const content = document.querySelector('.content');
     console.log(list.length)
     let numberOfToDos = listLength;
@@ -53,7 +55,6 @@ const loadToDos = (listArray, listLength, list) => {
         //edit button functionality
         editButton.addEventListener('click', () => {
             editToDoForm(listArray[i], list)
-            clearDiv('.modal')
         })
 
     }
@@ -95,12 +96,18 @@ const submitToDO = (list) => {
     console.log(list);
 
     loadToDos(list.singleList, list.singleList.length, list)
-    clearDiv('.modal')
 }
 
 //function to clear dom of to-dos
 const clearDiv = (childDiv) => {
     document.querySelector(childDiv).innerHTML = "";
+}
+
+const clearModal = () => {
+    let modal = document.querySelector('.modal')
+    let overlay = document.querySelector('.overlay')
+    modal.classList.remove('active');
+    overlay.classList.remove('active')
 }
 
 

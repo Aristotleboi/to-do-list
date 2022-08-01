@@ -52,6 +52,10 @@ const createNewToDoForm = (list) => {
         submitToDO(list);
     })
 
+    //pop up modal
+    modal.classList.add('active')
+    let overlay = document.querySelector('.overlay')
+    overlay.classList.add('active')
 
     FT.appendChild(FTLabel);
     FT.appendChild(FTInput);

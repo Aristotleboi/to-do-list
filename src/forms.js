@@ -80,11 +80,23 @@ const editToDoForm = (toDo, list) => {
     editFormButton.setAttribute('type', 'submit');
     editFormButton.setAttribute('id', 'form-submit-button')
 
+    document.querySelector('#form-title').value = toDo.title;
+    document.querySelector('#form-description').value = toDo.description;
+    document.querySelector('#form-date').value = toDo.dueDate;
+    document.querySelector('#form-priority').value = toDo.priority;
+
     editFormButton.addEventListener('click', () => {
         toDo.title = document.querySelector('#form-title').value;
         toDo.description = document.querySelector('#form-description').value;
         toDo.dueDate = document.querySelector('#form-date').value;
         toDo.priority = document.querySelector('#form-priority').value;
+
+        if (document.querySelector('#form-title').value == '' || document.querySelector('#form-title').value == "Title is required!") {
+            let titleBox = document.querySelector('#form-title');
+            titleBox.classList.add('form-error');
+            document.querySelector('#form-title').value = "Title is required!"
+            return
+        }
 
         loadToDos(list.singleList, list.singleList.length, list)
     })

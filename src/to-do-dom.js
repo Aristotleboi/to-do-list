@@ -81,6 +81,15 @@ const submitToDO = (list) => {
     let toDoDate = document.querySelector('#form-date').value;
     let toDoPriority = document.querySelector('#form-priority').value;
 
+    // checks to see to-do at least has title
+    if (document.querySelector('#form-title').value == '' || document.querySelector('#form-title').value == "Title is required!") {
+        console.log('form error')
+        let titleBox = document.querySelector('#form-title');
+        titleBox.classList.add('form-error');
+        document.querySelector('#form-title').value = "Title is required!"
+        return
+    }
+
     let newToDo = new toDo(toDoTitle, toDoDescription, toDoDate, toDoPriority, false);
     list.add(newToDo);
     console.log(list);

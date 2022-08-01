@@ -1,5 +1,5 @@
 import { createNewToDoForm, editToDoForm } from "./forms";
-import { toDo } from "./to-do";
+import { listType, toDo } from "./to-do";
 import { removeElementFromArray } from ".";
 
 //loads to-do's from array to dom
@@ -65,6 +65,12 @@ const loadToDos = (listArray, listLength, list) => {
 const loadLists = (lists) => {
     const header = document.querySelector('.to-do-lists');
     let numberOfLists = lists.length;
+
+    let newListButton = document.querySelector("#new-list");
+    newListButton.addEventListener('click', () => {
+
+    })
+
     for (let i = 0; i < numberOfLists; i++) {
         const tab = document.createElement('div');
         tab.classList.add('tab')
@@ -84,7 +90,6 @@ const submitToDO = (list) => {
 
     // checks to see to-do at least has title
     if (document.querySelector('#form-title').value == '' || document.querySelector('#form-title').value == "Title is required!") {
-        console.log('form error')
         let titleBox = document.querySelector('#form-title');
         titleBox.classList.add('form-error');
         document.querySelector('#form-title').value = "Title is required!"
@@ -96,6 +101,18 @@ const submitToDO = (list) => {
     console.log(list);
 
     loadToDos(list.singleList, list.singleList.length, list)
+}
+
+
+//working on adding new list to large array of lists
+const submitList = (lists) => {
+    let listTitle = document.querySelector('#list-form-title').value
+    if (document.querySelector('#list-form-title').value == '' || document.querySelector('#list-form-title').value == "Title is required!") {
+        listTitle.classList.add('form-error');
+        document.querySelector('#list-form-title').value = "Title is required!"
+    }
+
+    let newList = new listType(listTitle)
 }
 
 //function to clear dom of to-dos

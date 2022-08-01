@@ -109,6 +109,29 @@ const editToDoForm = (toDo, list) => {
     modal.appendChild(editFormButton)
 }
 
+const newListForm = (title) => {
+    let modal = document.querySelector('.modal')
+    let form = document.createElement('form')
+    form.classList.add('list-form');
+    let FT = document.createElement('div')
+    FT.setAttribute('class', 'list-form-title');
+    let FTLabel = document.createElement('label');
+    FTLabel.setAttribute('for', 'list-form-title')
+    FTLabel.innerHTML = 'Title';
+    let FTInput = document.createElement('input');
+    FTInput.setAttribute('type', 'text');
+    FTInput.setAttribute('name', 'list-form-title');
+    FTInput.setAttribute('id', 'list-form-title');
+    let FB = document.createElement('button')
+    FB.setAttribute('type', 'submit');
+    FB.setAttribute('id', 'list-form-button')
+    FB.innerText = 'submit';
+    FB.addEventListener('click', () => {
+        
+    })
+
+}
+
 export {
     createNewToDoForm,
     editToDoForm

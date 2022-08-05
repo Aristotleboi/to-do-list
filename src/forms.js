@@ -1,4 +1,4 @@
-import { currentList } from ".";
+import { currentList, submitList } from ".";
 import { submitToDO, loadToDos } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
@@ -109,7 +109,7 @@ const editToDoForm = (toDo, list) => {
     modal.appendChild(editFormButton)
 }
 
-const newListForm = (title) => {
+const newListForm = () => {
     let modal = document.querySelector('.modal')
     let form = document.createElement('form')
     form.classList.add('list-form');
@@ -127,12 +127,23 @@ const newListForm = (title) => {
     FB.setAttribute('id', 'list-form-button')
     FB.innerText = 'submit';
     FB.addEventListener('click', () => {
-        
+        submitList()
     })
+
+    modal.classList.add('active')
+    let overlay = document.querySelector('.overlay')
+    overlay.classList.add('active')
+
+    form.appendChild(FT)
+    form.appendChild(FTLabel);
+    form.appendChild(FTInput)
+    modal.appendChild(form);
+    modal.appendChild(FB)
 
 }
 
 export {
     createNewToDoForm,
-    editToDoForm
+    editToDoForm,
+    newListForm
 }

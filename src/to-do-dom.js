@@ -9,7 +9,6 @@ const loadToDos = (listArray, listLength, list) => {
     clearDiv('.modal')
     clearModal()
     const content = document.querySelector('.content');
-    console.log(list.listLength())
     let numberOfToDos = listLength;
     let newButton = document.createElement('button');
     newButton.innerText = '+';
@@ -71,7 +70,6 @@ const loadLists = (lists) => {
 
     const newListButton = document.querySelector("#new-list");
     newListButton.addEventListener('click', () => {
-        console.log('hello')
         newListForm();
     })
 
@@ -81,7 +79,6 @@ const loadLists = (lists) => {
         tab.innerText = lists[i].name;
         tab.setAttribute('date-array', i)
         tab.addEventListener('click', () => {
-            console.log(toDolists.singleList[i].singleList)
             loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
         })
         header.appendChild(tab);
@@ -105,7 +102,6 @@ const submitToDO = (list) => {
 
     let newToDo = new toDo(toDoTitle, toDoDescription, toDoDate, toDoPriority, false);
     list.add(newToDo);
-    console.log(list);
 
     loadToDos(list.singleList, list.listLength(), list)
 }

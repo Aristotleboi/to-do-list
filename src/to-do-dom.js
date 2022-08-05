@@ -1,6 +1,6 @@
 import { createNewToDoForm, editToDoForm, newListForm } from "./forms";
 import { listType, toDo } from "./to-do";
-import { removeElementFromArray, submitList } from ".";
+import { removeElementFromArray, submitList, toDolists } from ".";
 
 //loads to-do's from array to dom
 const loadToDos = (listArray, listLength, list) => {
@@ -9,7 +9,7 @@ const loadToDos = (listArray, listLength, list) => {
     clearDiv('.modal')
     clearModal()
     const content = document.querySelector('.content');
-    console.log(list.length)
+    console.log(list.listLength())
     let numberOfToDos = listLength;
     let newButton = document.createElement('button');
     newButton.innerText = '+';
@@ -78,9 +78,12 @@ const loadLists = (lists) => {
     for (let i = 0; i < numberOfLists; i++) {
         const tab = document.createElement('div');
         tab.classList.add('tab')
-        let title = document.createElement('div')
-        title.innerText = lists[i].name;
-        tab.appendChild(title);
+        tab.innerText = lists[i].name;
+        tab.setAttribute('date-array', i)
+        tab.addEventListener('click', () => {
+            console.log(toDolists.singleList[i].singleList)
+            loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
+        })
         header.appendChild(tab);
     }
 }
@@ -104,7 +107,7 @@ const submitToDO = (list) => {
     list.add(newToDo);
     console.log(list);
 
-    loadToDos(list.singleList, list.singleList.length, list)
+    loadToDos(list.singleList, list.listLength(), list)
 }
 
 //function to clear dom of to-dos

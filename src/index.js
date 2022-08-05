@@ -33,12 +33,12 @@ let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "07/04/22", 'low', fals
 const list1 = new listType("To-Do's")
 
 list1.add(toDo1);
-toDolists.add(list1);
+toDolists.add(list1)
 loadLists(toDolists.singleList);
 loadToDos(list1.singleList, list1.singleList.length, list1)
 
 export {
-    currentList,
+    toDolists,
     removeElementFromArray,
     submitList
 }

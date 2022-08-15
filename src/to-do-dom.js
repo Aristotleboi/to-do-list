@@ -123,5 +123,6 @@ export {
     loadToDos,
     loadLists,
     submitToDO,
-    clearDiv
+    clearDiv,
+    clearModal
 }

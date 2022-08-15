@@ -1,5 +1,5 @@
 import { currentList, submitList } from ".";
-import { submitToDO, loadToDos } from "./to-do-dom";
+import { submitToDO, loadToDos, clearModal, clearDiv } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
     let modal = document.querySelector('.modal')
@@ -56,6 +56,10 @@ const createNewToDoForm = (list) => {
     modal.classList.add('active')
     let overlay = document.querySelector('.overlay')
     overlay.classList.add('active')
+    overlay.addEventListener('click', () => {
+        clearModal();
+        clearDiv('.modal')
+    })
 
     FT.appendChild(FTLabel);
     FT.appendChild(FTInput);
@@ -133,6 +137,10 @@ const newListForm = () => {
     modal.classList.add('active')
     let overlay = document.querySelector('.overlay')
     overlay.classList.add('active')
+    overlay.addEventListener('click', () => {
+        clearModal();
+        clearDiv('.modal')
+    })
 
     form.appendChild(FT)
     form.appendChild(FTLabel);

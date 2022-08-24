@@ -81,6 +81,13 @@ const loadLists = (lists) => {
         tab.addEventListener('click', () => {
             loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
         })
+        const closeButton = document.createElement('button');
+        closeButton.innerText = 'X';
+        closeButton.addEventListener('click', () => {
+            header.removeChild(tab);
+            removeElementFromArray(lists, i)
+        })
+        tab.appendChild(closeButton)
         header.appendChild(tab);
     }
 }

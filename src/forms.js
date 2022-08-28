@@ -114,6 +114,7 @@ const editToDoForm = (toDo, list) => {
 }
 
 const newListForm = () => {
+    clearDiv('.modal');
     let modal = document.querySelector('.modal')
     let form = document.createElement('form')
     form.classList.add('list-form');
@@ -132,6 +133,8 @@ const newListForm = () => {
     FB.innerText = 'submit';
     FB.addEventListener('click', () => {
         submitList()
+        clearModal()
+        clearDiv('.modal')
     })
 
     modal.classList.add('active')

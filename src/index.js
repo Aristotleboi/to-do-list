@@ -1,4 +1,4 @@
-import {loadToDos, loadLists, submitToDO} from './to-do-dom';
+import {loadToDos, loadLists, submitToDO, clearDiv, clearModal} from './to-do-dom';
 import {toDo, listType} from './to-do'
 import './style.css';
 import { createNewToDoForm } from './forms';
@@ -26,7 +26,6 @@ const submitList = () => {
     let newList = new listType(listTitle);
     toDolists.add(newList);
     loadLists(toDolists.singleList)
-
 }
 
 let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "07/04/22", 'low', false);

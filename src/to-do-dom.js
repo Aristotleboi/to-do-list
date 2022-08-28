@@ -37,11 +37,15 @@ const loadToDos = (listArray, listLength, list) => {
         let editButton = document.createElement('button');
         editButton.setAttribute('class', 'to-do-edit-button');
         editButton.innerText = 'Edit';
+        let checkButton = document.createElement('button')
+        checkButton.setAttribute('class', 'check-button');
+        checkButton.innerText = 'Check'
 
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(date);
         card.appendChild(checked);
+        card.appendChild(checkButton)
         card.appendChild(editButton)
         card.appendChild(closeButton);
         content.appendChild(card);
@@ -54,6 +58,15 @@ const loadToDos = (listArray, listLength, list) => {
         //edit button functionality
         editButton.addEventListener('click', () => {
             editToDoForm(listArray[i], list)
+        })
+        checkButton.addEventListener('click', () => {
+            if (card.classList == 'card checked') {
+                card.classList.remove('checked')
+                console.log(card.classList)
+                return
+            }
+            card.classList.add('checked');
+            console.log(card.classList)
         })
 
     }
@@ -123,6 +136,10 @@ const clearModal = () => {
     let overlay = document.querySelector('.overlay')
     modal.classList.remove('active');
     overlay.classList.remove('active')
+}
+
+const checkToDo = () => {
+
 }
 
 

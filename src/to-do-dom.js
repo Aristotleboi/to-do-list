@@ -5,17 +5,14 @@ import { removeElementFromArray, submitList, toDolists } from ".";
 //loads to-do's from array to dom
 const loadToDos = (listArray, listLength, list) => {
     //this clears the dom of all to-do cards and clears the form after its been submitted
-    clearDiv('.content')
-    clearDiv('.modal')
-    clearModal()
     const content = document.querySelector('.content');
     let numberOfToDos = listLength;
-    let newButton = document.createElement('button');
-    newButton.innerText = '+';
-    newButton.addEventListener('click', () => {
-        createNewToDoForm(list)
-    })
-    content.appendChild(newButton);
+    let newButton = document.querySelector('.new-to-do')
+    if (newButton) {
+        newButton.addEventListener('click', () => {
+            createNewToDoForm(list)
+        })
+    }
     for (let i = 0; i < numberOfToDos; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -28,9 +25,6 @@ const loadToDos = (listArray, listLength, list) => {
         let date = document.createElement('p');
         date.innerText = listArray[i].dueDate;
         date.setAttribute('class', 'to-do-date');
-        let checked = document.createElement('div')
-        checked.innerText = listArray[i].checked;
-        checked.setAttribute('class', 'to-do-checked');
         let closeButton = document.createElement('button');
         closeButton.setAttribute('class', 'to-do-close-button');
         closeButton.innerText = 'delete';
@@ -44,7 +38,6 @@ const loadToDos = (listArray, listLength, list) => {
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(date);
-        card.appendChild(checked);
         card.appendChild(checkButton)
         card.appendChild(editButton)
         card.appendChild(closeButton);
@@ -62,11 +55,11 @@ const loadToDos = (listArray, listLength, list) => {
         checkButton.addEventListener('click', () => {
             if (card.classList == 'card checked') {
                 card.classList.remove('checked')
-                console.log(card.classList)
+                listArray[i].checked = false;
                 return
             }
             card.classList.add('checked');
-            console.log(card.classList)
+            listArray[i].checked = true;
         })
 
     }
@@ -75,9 +68,6 @@ const loadToDos = (listArray, listLength, list) => {
 //loads lists to dom
 //requires master array with all lists as input
 const loadLists = (lists) => {
-    clearModal()
-    clearDiv('.modal')
-    clearDiv('.to-do-lists')
     const header = document.querySelector('.to-do-lists');
     let numberOfLists = lists.length;
 
@@ -92,6 +82,9 @@ const loadLists = (lists) => {
         tab.innerText = lists[i].name;
         tab.setAttribute('date-array', i)
         tab.addEventListener('click', () => {
+            clearDiv('.content')
+            clearDiv('.modal')
+            clearModal()
             loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
         })
         const closeButton = document.createElement('button');
@@ -110,7 +103,6 @@ const submitToDO = (list) => {
     let toDoTitle = document.querySelector('#form-title').value;
     let toDoDescription = document.querySelector('#form-description').value;
     let toDoDate = document.querySelector('#form-date').value;
-    let toDoPriority = document.querySelector('#form-priority').value;
 
     // checks to see to-do at least has title
     if (document.querySelector('#form-title').value == '' || document.querySelector('#form-title').value == "Title is required!") {
@@ -120,9 +112,11 @@ const submitToDO = (list) => {
         return
     }
 
-    let newToDo = new toDo(toDoTitle, toDoDescription, toDoDate, toDoPriority, false);
+    let newToDo = new toDo(toDoTitle, toDoDescription, toDoDate, 'low', false);
     list.add(newToDo);
-
+    clearDiv('.content')
+    clearDiv('.modal')
+    clearModal()
     loadToDos(list.singleList, list.listLength(), list)
 }
 
@@ -136,10 +130,6 @@ const clearModal = () => {
     let overlay = document.querySelector('.overlay')
     modal.classList.remove('active');
     overlay.classList.remove('active')
-}
-
-const checkToDo = () => {
-
 }
 
 

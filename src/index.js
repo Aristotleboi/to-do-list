@@ -25,16 +25,35 @@ const submitList = () => {
 
     let newList = new listType(listTitle);
     toDolists.add(newList);
+    clearDiv('.to-do-lists')
     loadLists(toDolists.singleList)
 }
 
-let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "07/04/22", 'low', false);
+const initialLoad = () => {
+    let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "2022-08-27", 'low', false);
+    const list1 = new listType("Default")
+    list1.add(toDo1)
+    toDolists.add(list1)
+    loadLists(toDolists)
+    loadToDos(list1.singleList, list1.singleList.length, list1)
+    const showAllLists = document.querySelector('.master-list')
+    showAllLists.addEventListener('click', () => {
+        console.log(toDolists.singleList[0].singleList)
+        if (toDolists.listLength() === 1) return
+        clearDiv('.content')
+        clearDiv('.modal')
+        clearModal()
+        for (let i = 0; i < toDolists.listLength(); i++) {
+            loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
+        }
+    })
+}
+
+let toDo1 = new toDo("Grocerys", "milk, cereal, coffee", "2022-08-27", 'low', false);
 const list1 = new listType("To-Do's")
 
-list1.add(toDo1);
-toDolists.add(list1)
-loadLists(toDolists.singleList);
-loadToDos(list1.singleList, list1.singleList.length, list1)
+
+initialLoad()
 
 export {
     toDolists,

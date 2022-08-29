@@ -2,6 +2,8 @@ import { currentList, submitList } from ".";
 import { submitToDO, loadToDos, clearModal, clearDiv } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
+    clearDiv('.modal')
+    clearModal()
     let modal = document.querySelector('.modal')
     let form = document.createElement('form')
     form.classList.add('form');
@@ -31,18 +33,9 @@ const createNewToDoForm = (list) => {
     FDateLabel.setAttribute('for', 'form-date');
     FDateLabel.innerText = 'Date';
     let FDateInput = document.createElement('input');
-    FDateInput.setAttribute('type', 'text');
+    FDateInput.setAttribute('type', 'date');
     FDateInput.setAttribute('name', 'form-date');
     FDateInput.setAttribute('id', 'form-date');
-    let FP = document.createElement('div');
-    FP.setAttribute('class' ,'form-priority');
-    let FPLabel = document.createElement('label');
-    FPLabel.setAttribute('for', 'form-priority');
-    FPLabel.innerText = 'Priority';
-    let FPInput = document.createElement('input');
-    FPInput.setAttribute('type', 'text');
-    FPInput.setAttribute('name', 'form-priority');
-    FPInput.setAttribute('id', 'form-priority');
     let FB = document.createElement('button')
     FB.setAttribute('type', 'submit');
     FB.setAttribute('id', 'form-submit-button')
@@ -67,12 +60,9 @@ const createNewToDoForm = (list) => {
     FD.appendChild(FDInput);
     FDate.appendChild(FDateLabel);
     FDate.appendChild(FDateInput);
-    FP.appendChild(FPLabel);
-    FP.appendChild(FPInput);
     form.appendChild(FT);
     form.appendChild(FD);
     form.appendChild(FDate);
-    form.appendChild(FP);
     modal.appendChild(form);
     modal.appendChild(FB)
 
@@ -92,13 +82,11 @@ const editToDoForm = (toDo, list) => {
     document.querySelector('#form-title').value = toDo.title;
     document.querySelector('#form-description').value = toDo.description;
     document.querySelector('#form-date').value = toDo.dueDate;
-    document.querySelector('#form-priority').value = toDo.priority;
 
     editFormButton.addEventListener('click', () => {
         toDo.title = document.querySelector('#form-title').value;
         toDo.description = document.querySelector('#form-description').value;
         toDo.dueDate = document.querySelector('#form-date').value;
-        toDo.priority = document.querySelector('#form-priority').value;
 
         if (document.querySelector('#form-title').value == '' || document.querySelector('#form-title').value == "Title is required!") {
             let titleBox = document.querySelector('#form-title');
@@ -106,7 +94,9 @@ const editToDoForm = (toDo, list) => {
             document.querySelector('#form-title').value = "Title is required!"
             return
         }
-
+        clearDiv('.content')
+        clearDiv('.modal')
+        clearModal()
         loadToDos(list.singleList, list.singleList.length, list)
     })
 

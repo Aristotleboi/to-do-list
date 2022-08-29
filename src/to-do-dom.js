@@ -1,4 +1,4 @@
-import { createNewToDoForm, editToDoForm, newListForm } from "./forms";
+import { createNewToDoForm, editToDoForm, newListForm, editList } from "./forms";
 import { listType, toDo } from "./to-do";
 import { removeElementFromArray, submitList, toDolists } from ".";
 
@@ -87,14 +87,26 @@ const loadLists = (lists) => {
             clearModal()
             loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
         })
+        const editListButton = document.createElement('button');
+        editListButton.innerText = '...';
+        editListButton.addEventListener('click', () => {
+            editList(lists[i])
+        })
         const closeButton = document.createElement('button');
         closeButton.innerText = 'X';
         closeButton.addEventListener('click', () => {
+            if(toDolists.listLength() == 1) return
             header.removeChild(tab);
-            removeElementFromArray(lists, i)
+            header.removeChild(editListButton)
+            header.removeChild(closeButton)
+            removeElementFromArray(toDolists.singleList, i)
+            console.log(toDolists.singleList)
         })
-        tab.appendChild(closeButton)
+        //tab.appendChild(editListButton)
+        //tab.appendChild(closeButton)
         header.appendChild(tab);
+        header.appendChild(editListButton);
+        header.appendChild(closeButton)
     }
 }
 //get values from form pop up to make new to-do.

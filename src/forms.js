@@ -1,5 +1,5 @@
 import { currentList, submitList } from ".";
-import { submitToDO, loadToDos, clearModal, clearDiv } from "./to-do-dom";
+import { submitToDO, loadToDos, clearModal, clearDiv, loadLists } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
     clearDiv('.modal')
@@ -143,8 +143,35 @@ const newListForm = () => {
 
 }
 
+const editList = (list) => {
+    newListForm()
+    let modal = document.querySelector('.modal')
+    let FB = document.querySelector('#list-form-button')
+    FB.remove();
+    let editFormButton = document.createElement('button');
+    editFormButton.innerText = "save"
+    editFormButton.setAttribute('type', 'submit');
+    editFormButton.setAttribute('id', 'form-submit-button')
+    editFormButton.addEventListener('click', () => {
+        toDo.title = list.name = document.querySelector('#list-form-title').value;
+
+        if (document.querySelector('#list-form-title').value == '' || document.querySelector('#list-form-title').value == "Title is required!") {
+            let titleBox = document.querySelector('#form-title');
+            titleBox.classList.add('form-error');
+            document.querySelector('#list-form-title').value = "Title is required!"
+            return
+        }
+        clearDiv('.to-do-list')
+        clearDiv('.modal')
+        clearModal()
+        loadLists(list)
+    })
+    modal.appendChild(editFormButton)
+}
+
 export {
     createNewToDoForm,
     editToDoForm,
-    newListForm
+    newListForm,
+    editList
 }

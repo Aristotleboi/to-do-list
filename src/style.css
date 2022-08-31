@@ -1,27 +1,164 @@
+html {
+    display: flex;
+    flex-direction: row;
+    min-height: 100v;
+}
+
 body {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 350px 5fr;
+    grid-template-rows: 70px;
     padding: 0;
     margin: 0;
+}
+
+.title-splash {
     background-color: rgb(41, 72, 97);
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arvo', serif;
+    font-weight: 700;
+}
+
+.title-splash p {
+    color: rgb(231, 239, 248);
+    font-size: 36px;
 }
 
 .header {
-    background-color: green;
+    background-color: rgb(165, 187, 206);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 15px;
+    padding-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 .master-list {
-    background-color: red;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border-bottom: solid 2px black;
+    cursor: pointer;
+}
+
+.list-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.edit-list-button {
+    margin-left: auto;
+    padding-bottom: 7px;
+}
+
+.list-container button {
+    background-color: rgb(165, 187, 206);
+    border: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer
 }
 
 .tab {
-    background-color: red;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+#new-list {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(41, 72, 97);
+    height: 40px;
+    color: rgb(231, 239, 248);
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.to-do-area{
+    display: flex;
+    flex-direction: column;
+    padding: 35px 60px;
+}
+
+.button-anchor {
+    display: flex;
+    height: 35px;
+}
+
+.new-to-do {
+    flex-grow: 1;
+    background-color: rgb(41, 72, 97);
+    border: none;
+    border-radius: 8px;
+    font-size: 2em;
+    color: rgb(231, 239, 248);
+    cursor: pointer;
+}
+
+.content {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     border: 3px solid black;
+    margin: 10px 10px;
+    height: 250px;
+    padding: 15px 15px;
+    align-items: center;
+}
+
+.card h3 {
+    margin: 5px;
+    border-bottom: 2px solid black;
+    width: 100%;
+    text-align: center;
+}
+
+.card p {
+    align-self: flex-start;
+}
+
+.to-do-description {
+    margin-top: 25px;
+}
+
+.to-do-date {
+    margin-top: 50px;
+}
+
+.card-buttons {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.card-buttons button {
+    border: none;
+    background-color: rgb(41, 72, 97);
+    margin-right: 15px;
+    border-radius: 5px;
+    height: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(231, 239, 248);
+    width: 90px;
 }
 
 .card.checked {
-    background-color: green;
+    background-color: rgb(165, 187, 206);
+    text-decoration: line-through;
 }
 
 .form-error {

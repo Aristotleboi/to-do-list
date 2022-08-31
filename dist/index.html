@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <title>To-Do List</title>
 </head>
 <body>
+    <div class="title-splash">
+        <p>To-Do List</p>
+    </div>
     <div class="header">
-        <button id="new-list">New List of To Dos</button>
         <div class="master-list">All To-Do's</div>
         <div class="to-do-lists"></div>
+        <button id="new-list">New List of To-Do's</button>
     </div>
-    <div class="button-anchor">
-        <button class="new-to-do">+</button>
-    </div>
-    <div class="content">
+    <div class="to-do-area">
+        <div class="button-anchor">
+            <button class="new-to-do">+</button>
+        </div>
+        <div class="content">
+        </div>
     </div>
 
     <div class="modal">

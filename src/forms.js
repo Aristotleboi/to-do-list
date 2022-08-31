@@ -1,4 +1,4 @@
-import { currentList, submitList } from ".";
+import { currentList, submitList, save } from ".";
 import { submitToDO, loadToDos, clearModal, clearDiv, loadLists } from "./to-do-dom";
 
 const createNewToDoForm = (list) => {
@@ -97,6 +97,7 @@ const editToDoForm = (toDo, list) => {
         clearDiv('.content')
         clearDiv('.modal')
         clearModal()
+        save()
         loadToDos(list.singleList, list.singleList.length, list)
     })
 

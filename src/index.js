@@ -73,6 +73,17 @@ const loadPage = () => {
         parseLists()
         loadLists(toDolists.singleList)
         loadToDos(toDolists.singleList[0].singleList, toDolists.singleList[0].listLength(), toDolists.singleList[0])
+        const showAllLists = document.querySelector('.master-list')
+        showAllLists.addEventListener('click', () => {
+            console.log(toDolists.singleList[0].singleList)
+            if (toDolists.listLength() === 1) return
+            clearDiv('.content')
+            clearDiv('.modal')
+            clearModal()
+            for (let i = 0; i < toDolists.listLength(); i++) {
+                loadToDos(toDolists.singleList[i].singleList, toDolists.singleList[i].listLength(), toDolists.singleList[i])
+            }
+        })
     }
 
 }

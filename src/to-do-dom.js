@@ -34,13 +34,16 @@ const loadToDos = (listArray, listLength, list) => {
         let checkButton = document.createElement('button')
         checkButton.setAttribute('class', 'check-button');
         checkButton.innerText = 'Check'
+        const cardButtons = document.createElement('div')
+        cardButtons.classList.add('card-buttons')
 
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(date);
-        card.appendChild(checkButton)
-        card.appendChild(editButton)
-        card.appendChild(closeButton);
+        cardButtons.appendChild(checkButton)
+        cardButtons.appendChild(editButton)
+        cardButtons.appendChild(closeButton)
+        card.appendChild(cardButtons)
         content.appendChild(card);
 
         //close button functionality
@@ -77,6 +80,8 @@ const loadLists = (lists) => {
     })
 
     for (let i = 0; i < numberOfLists; i++) {
+        const listContainer = document.createElement('div')
+        listContainer.classList.add('list-container')
         const tab = document.createElement('div');
         tab.classList.add('tab')
         tab.innerText = lists[i].name;
@@ -89,6 +94,7 @@ const loadLists = (lists) => {
         })
         const editListButton = document.createElement('button');
         editListButton.innerText = '...';
+        editListButton.classList.add('edit-list-button')
         editListButton.addEventListener('click', () => {
             editList(lists[i])
         })
@@ -96,20 +102,17 @@ const loadLists = (lists) => {
         closeButton.innerText = 'X';
         closeButton.addEventListener('click', () => {
             if(toDolists.listLength() == 1) return
-            header.removeChild(tab);
-            header.removeChild(editListButton)
-            header.removeChild(closeButton)
+            header.removeChild(listContainer);
             removeElementFromArray(toDolists.singleList, i)
             clearDiv('.content')
             clearDiv('.to-do-lists')
             loadLists(toDolists.singleList)
             loadToDos(toDolists.singleList[0].singleList, toDolists.singleList[0].listLength(), toDolists.singleList[0])
         })
-        //tab.appendChild(editListButton)
-        //tab.appendChild(closeButton)
-        header.appendChild(tab);
-        header.appendChild(editListButton);
-        header.appendChild(closeButton)
+        listContainer.appendChild(tab);
+        listContainer.appendChild(editListButton);
+        listContainer.appendChild(closeButton)
+        header.appendChild(listContainer)
     }
 }
 //get values from form pop up to make new to-do.

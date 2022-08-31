@@ -1,6 +1,6 @@
 import { createNewToDoForm, editToDoForm, newListForm, editList } from "./forms";
 import { listType, toDo } from "./to-do";
-import { removeElementFromArray, submitList, toDolists } from ".";
+import { removeElementFromArray, submitList, toDolists, save } from ".";
 
 //loads to-do's from array to dom
 const loadToDos = (listArray, listLength, list) => {
@@ -132,6 +132,7 @@ const submitToDO = (list) => {
     clearDiv('.content')
     clearDiv('.modal')
     clearModal()
+    save()
     loadToDos(list.singleList, list.listLength(), list)
 }
 

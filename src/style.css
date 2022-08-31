@@ -165,11 +165,41 @@ body {
     border: 1px solid red;
 }
 
+.list-form label{
+    margin-right: 20px;
+}
+
+.modal button {
+    margin-top: 15px;
+    border: none;
+    background-color: rgb(41, 72, 97);
+    border-radius: 6px;
+    height: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(231, 239, 248);
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.modal label {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.modal input {
+    margin-left: 10px;
+    float: right;
+    margin-bottom: 10px;
+}
+
 
 
 /* modal */
 
 .modal {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -180,9 +210,15 @@ body {
     background-color: white;
     width: 500px;
     max-width: 80%;
+    min-height: 60px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .modal.active {
+    display: flex;
     transform: translate(-50%, -50%) scale(1);
 }
 

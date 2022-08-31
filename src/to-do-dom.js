@@ -102,7 +102,7 @@ const loadLists = (lists) => {
             removeElementFromArray(toDolists.singleList, i)
             clearDiv('.content')
             clearDiv('.to-do-lists')
-            loadLists(toDolists)
+            loadLists(toDolists.singleList)
             loadToDos(toDolists.singleList[0].singleList, toDolists.singleList[0].listLength(), toDolists.singleList[0])
         })
         //tab.appendChild(editListButton)
